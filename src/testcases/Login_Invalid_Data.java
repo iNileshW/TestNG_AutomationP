@@ -41,14 +41,25 @@ public class Login_Invalid_Data {
 		Thread.sleep(2000);
 		Alert alert = driver.switchTo().alert();
 		System.out.println(alert);
-		alert.accept();//alert.dismiss();
 		String alert_Text = alert.getText();
-		if (alert_Text.contentEquals("")) {
+		alert.accept();//alert.dismiss();
+		
+		if (alert_Text.contentEquals("org.openqa.selenium.remote.RemoteWebDriver$RemoteAlert@ecfbe91")) {
 		System.out.println("Right alert message");
 		  }
 		else {
 			System.out.println("Wrong alert message");
 			}
+		
+		//File Upload Handling
+		driver.get("http://html.com/input-type-file/");
+		Thread.sleep(4000);
+		Alert alert1 = driver.switchTo().alert();
+		Thread.sleep(4000);
+		alert1.dismiss();
+		
+		driver.findElement(By.name("fileupload")).sendKeys("C:\\Users\\nwairagade\\Downloads\\fmw_12213_readme.html");//location of file path
+		
 		}
   @BeforeMethod
   public void beforeMethod() {
