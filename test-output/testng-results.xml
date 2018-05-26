@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="103009" started-at="2018-05-26T08:04:45Z" finished-at="2018-05-26T08:06:28Z">
+  <suite name="Default suite" duration-ms="124831" started-at="2018-05-26T11:40:44Z" finished-at="2018-05-26T11:42:49Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="103009" started-at="2018-05-26T08:04:45Z" finished-at="2018-05-26T08:06:28Z">
+    <test name="Default test" duration-ms="124831" started-at="2018-05-26T11:40:44Z" finished-at="2018-05-26T11:42:49Z">
       <class name="testcases.Login_Invalid_Data">
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testcases.Login_Invalid_Data@7ed7259e]" name="beforeMethod" is-config="true" duration-ms="96703" started-at="2018-05-26T08:04:45Z" finished-at="2018-05-26T08:06:22Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testcases.Login_Invalid_Data@7ed7259e]" name="beforeMethod" is-config="true" duration-ms="83002" started-at="2018-05-26T11:40:44Z" finished-at="2018-05-26T11:42:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="f()[pri:0, instance:testcases.Login_Invalid_Data@7ed7259e]" name="f" duration-ms="5336" started-at="2018-05-26T08:06:22Z" finished-at="2018-05-26T08:06:27Z">
+        <test-method status="PASS" signature="f()[pri:0, instance:testcases.Login_Invalid_Data@7ed7259e]" name="f" duration-ms="41781" started-at="2018-05-26T11:42:07Z" finished-at="2018-05-26T11:42:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- f -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testcases.Login_Invalid_Data@7ed7259e]" name="afterMethod" is-config="true" duration-ms="866" started-at="2018-05-26T08:06:27Z" finished-at="2018-05-26T08:06:28Z">
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testcases.Login_Invalid_Data@7ed7259e]" name="afterMethod" is-config="true" duration-ms="0" started-at="2018-05-26T11:42:49Z" finished-at="2018-05-26T11:42:49Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->

@@ -4,6 +4,7 @@ import static org.testng.Assert.assertEquals;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,7 +15,7 @@ import org.testng.annotations.Test;
 public class Login_Invalid_Data {
 	WebDriver driver;
   @Test
-  public void f() {
+  public void f() throws InterruptedException {
 	  //To print Page Title to console
 	  String Title = driver.getTitle(); 
 		System.out.println(Title);
@@ -30,9 +31,25 @@ public class Login_Invalid_Data {
 		String loginmsg=driver.findElement(By.xpath("//*[@id=\"center_column\"]/div[1]/ol/li")).getText();
 		System.out.println(loginmsg);
 		System.out.println(driver.getCurrentUrl());
-		System.out.println(driver.getPageSource());
+		//System.out.println(driver.getPageSource());
 		assertEquals(loginmsg,"Authentication failed.");
-  }
+		
+		driver.get("https://www.rediff.com");
+		driver.findElement(By.xpath("//*[@id=\"signin_info\"]/a[1]")).click();
+		//Pop up class handling by alert:
+		driver.findElement(By.name("proceed")).click();
+		Thread.sleep(2000);
+		Alert alert = driver.switchTo().alert();
+		System.out.println(alert);
+		alert.accept();//alert.dismiss();
+		String alert_Text = alert.getText();
+		if (alert_Text.contentEquals("")) {
+		System.out.println("Right alert message");
+		  }
+		else {
+			System.out.println("Wrong alert message");
+			}
+		}
   @BeforeMethod
   public void beforeMethod() {
 	  System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver_win32\\chromedriver.exe");
@@ -45,7 +62,7 @@ public class Login_Invalid_Data {
 
   @AfterMethod
   public void afterMethod() {
-	  driver.quit();
+	  //driver.quit();
   }
 
 }
