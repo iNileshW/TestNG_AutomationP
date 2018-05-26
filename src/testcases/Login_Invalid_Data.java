@@ -46,7 +46,7 @@ public class Login_Invalid_Data {
 		
 		if (alert_Text.contentEquals("org.openqa.selenium.remote.RemoteWebDriver$RemoteAlert@ecfbe91")) {
 		System.out.println("Right alert message");
-		  }
+		  } 
 		else {
 			System.out.println("Wrong alert message");
 			}
