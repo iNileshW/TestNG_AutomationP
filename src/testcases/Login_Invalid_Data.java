@@ -8,13 +8,14 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class Login_Invalid_Data {
 	WebDriver driver;
-  @Test
+  @Test (enabled = false)
   public void f() throws InterruptedException {
 	  //To print Page Title to console
 	  String Title = driver.getTitle(); 
@@ -51,16 +52,31 @@ public class Login_Invalid_Data {
 			System.out.println("Wrong alert message");
 			}
 		
-		//File Upload Handling
+		//File Upload Handling for type = file
 		driver.get("http://html.com/input-type-file/");
 		Thread.sleep(4000);
-		Alert alert1 = driver.switchTo().alert();
+		driver.findElement(By.xpath("//*[@id=\"om-lightbox-postal-optin-wrap\"]/a")).click();
+		//Alert alert1 = driver.switchTo().alert();
 		Thread.sleep(4000);
-		alert1.dismiss();
+		//alert1.dismiss();
 		
-		driver.findElement(By.name("fileupload")).sendKeys("C:\\Users\\nwairagade\\Downloads\\fmw_12213_readme.html");//location of file path
+		driver.findElement(By.xpath("//*[@id=\"fileupload\"]")).sendKeys("C:\\Users\\nwairagade\\Downloads\\fmw_12213_readme.html");//location of file path
+		Thread.sleep(4000);
 		
 		}
+  
+  @Test (enabled = true)
+  public void mousemovemnet() throws InterruptedException {
+	  driver.get("http://www.spicejet.com/");
+	  Actions action = new Actions(driver);//Actions class
+	  action.moveToElement(driver.findElement(By.linkText("ADD-ONS"))).build().perform(); //build & perform are methods to perform the actions
+	  Thread.sleep(2000);
+	  driver.findElement(By.linkText("Hot Meals")).click();
+	  
+	  
+  }
+  
+  
   @BeforeMethod
   public void beforeMethod() {
 	  System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver_win32\\chromedriver.exe");
@@ -68,7 +84,7 @@ public class Login_Invalid_Data {
 		driver.get("http://automationpractice.com");
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-	
+		driver.manage().window().maximize();
   }
 
   @AfterMethod
