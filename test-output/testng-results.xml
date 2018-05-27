@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="3" total="4" passed="1">
+<testng-results skipped="0" failed="0" ignored="4" total="5" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="14636" started-at="2018-05-27T12:49:50Z" finished-at="2018-05-27T12:50:04Z">
+  <suite name="Default suite" duration-ms="28527" started-at="2018-05-27T15:00:40Z" finished-at="2018-05-27T15:01:09Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="14636" started-at="2018-05-27T12:49:50Z" finished-at="2018-05-27T12:50:04Z">
+    <test name="Default test" duration-ms="28527" started-at="2018-05-27T15:00:40Z" finished-at="2018-05-27T15:01:09Z">
       <class name="testcases.Login_Invalid_Data">
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testcases.Login_Invalid_Data@18be83e4]" name="beforeMethod" is-config="true" duration-ms="10543" started-at="2018-05-27T12:49:50Z" finished-at="2018-05-27T12:50:00Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testcases.Login_Invalid_Data@7ed7259e]" name="beforeMethod" is-config="true" duration-ms="10297" started-at="2018-05-27T15:00:40Z" finished-at="2018-05-27T15:00:51Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="ImplicitWait()[pri:0, instance:testcases.Login_Invalid_Data@18be83e4]" name="ImplicitWait" duration-ms="4011" started-at="2018-05-27T12:50:00Z" finished-at="2018-05-27T12:50:04Z">
+        <test-method status="PASS" signature="DynamicXpath()[pri:0, instance:testcases.Login_Invalid_Data@7ed7259e]" name="DynamicXpath" duration-ms="18123" started-at="2018-05-27T15:00:51Z" finished-at="2018-05-27T15:01:09Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- ImplicitWait -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testcases.Login_Invalid_Data@18be83e4]" name="afterMethod" is-config="true" duration-ms="0" started-at="2018-05-27T12:50:04Z" finished-at="2018-05-27T12:50:04Z">
+        </test-method> <!-- DynamicXpath -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testcases.Login_Invalid_Data@7ed7259e]" name="afterMethod" is-config="true" duration-ms="5" started-at="2018-05-27T15:01:09Z" finished-at="2018-05-27T15:01:09Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->

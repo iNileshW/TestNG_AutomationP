@@ -92,11 +92,36 @@ public class Login_Invalid_Data {
 	    
   }
   
-  @Test (enabled = true)
+  @Test (enabled = false)
   public void ImplicitWait() {
 	  driver.get("http://www.half.ebay.com");
 	  //TImeout for pageload....for heavier pages
 	  driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+	  
+  }
+  
+  @Test (enabled = true)
+  public void DynamicXpath() {
+	  //Don't use absolute xpath rather create own xpath
+	  //1.Xpath starts with "//" 2. Find HTML tag of element i.e. after "<" 3. After tag followed by "[]" 4. Check different properties avlbl 
+	  //for element e.g. for classname write "@class='' other property can be name or also can use function called "contains(@class,'actextbox')"
+	  //contains is very powerful& can write any propoerty in key value form
+	  //When id is dynamic, then use dynamic use contains 
+	  driver.get("http://www.half.ebay.com");
+	  driver.findElement(By.xpath("//input[@type='text']")).clear();
+	  driver.findElement(By.xpath("//input[@class='gh-tb ui-autocomplete-input']")).sendKeys("Hi");
+	  driver.findElement(By.xpath("//input[contains(@class,'gh-tb ui-autocomplete-input')]")).clear();
+	  driver.findElement(By.xpath("//input[contains(@id,'gh-ac')]")).click(); // if id is dynamic then write common part & then put "_" for 
+	  //dynamic part
+	  
+	  //Another e.g for dynamic element use starts-with or ends-with
+	  /*driver.findElement(By.xpath("//input[starts-with(@id,'gh_')]")).click();
+	  driver.findElement(By.xpath("//input[ends-with(@id,'_ac')]")).click();*/
+	  
+	  //Creating xpath for link:
+	  //For links the html tag is always "a" tag. Here text is function
+	  driver.findElement(By.xpath("//a[contains(text(),'Sell')]")).click();
+	  //Customized xpath very powerful & fast
 	  
   }
   

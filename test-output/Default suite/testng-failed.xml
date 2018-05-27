@@ -6,7 +6,7 @@
       <class name="testcases.Login_Invalid_Data">
         <methods>
           <include name="afterMethod"/>
-          <include name="mousemovemnet"/>
+          <include name="DynamicXpath"/>
           <include name="beforeMethod"/>
         </methods>
       </class> <!-- testcases.Login_Invalid_Data -->
