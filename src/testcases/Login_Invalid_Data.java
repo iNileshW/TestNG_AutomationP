@@ -2,11 +2,16 @@ package testcases;
 
 import static org.testng.Assert.assertEquals;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -143,7 +148,7 @@ public class Login_Invalid_Data {
 	  //For buttons use <button>	  
   }
   
-  @Test (enabled = true)
+  @Test (enabled = false)
   public void pagenavigation() throws InterruptedException {
 	  driver.navigate().to("http://www.google.com"); //For external URL from current url then use navigate-to
 	  Thread.sleep(2000);
@@ -151,6 +156,19 @@ public class Login_Invalid_Data {
 	  Thread.sleep(2000);
 	  driver.navigate().forward();
 	  driver.navigate().refresh();
+	  
+  }
+  
+  @Test (enabled = true)
+  public void screenshot() throws IOException {
+	  driver.navigate().to("https://www.google.com");
+	  //Take screenshot & Store as a file format
+	  //getScreenshotAs is a method. This will give a file object but this is top casting into TakeScreenshot class
+	  //Converting driver into takescreenshot interface 
+	  File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE); 
+	  //Copy the screenshot to desired location using copyfile//method
+	  //Copying file from src to said location of project folder
+	  FileUtils.copyFile(src, new File ("C:\\Users\\nwairagade\\eclipse-workspace\\TestNG_AutomationP-master\\google.png"));
 	  
   }
   
