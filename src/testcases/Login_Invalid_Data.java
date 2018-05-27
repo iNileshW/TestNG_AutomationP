@@ -65,7 +65,7 @@ public class Login_Invalid_Data {
 		
 		}
   
-  @Test (enabled = true)
+  @Test (enabled = false)
   public void mousemovemnet() throws InterruptedException {
 	  driver.get("http://www.spicejet.com/");
 	  Actions action = new Actions(driver);//Actions class
@@ -76,7 +76,21 @@ public class Login_Invalid_Data {
 	  
   }
   
-  
+  @Test (enabled = true)
+  public void dragdrop() {
+	  driver.get("http://jqueryui.com/droppable");
+	  //single click-move-release by single click
+	  //Frame identification by right click - view pagesoruce, search for frame. If iFrame tag is available
+	  //To switch to frame where operation to be performed
+	  driver.switchTo().frame(0);//0 is ffor 1 frame if more frames then put respective number
+	  Actions action = new Actions(driver);//Actions class
+	  action.clickAndHold(driver.findElement(By.xpath("//*[@id=\"draggable\"]")))
+	  	.moveToElement(driver.findElement(By.xpath("//*[@id=\"droppable\"]")))
+	  	.release()
+	  	.build()
+	  	.perform();
+	    
+  }
   @BeforeMethod
   public void beforeMethod() {
 	  System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver_win32\\chromedriver.exe");
