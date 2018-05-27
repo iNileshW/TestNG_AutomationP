@@ -76,13 +76,13 @@ public class Login_Invalid_Data {
 	  
   }
   
-  @Test (enabled = true)
+  @Test (enabled = false)
   public void dragdrop() {
 	  driver.get("http://jqueryui.com/droppable");
 	  //single click-move-release by single click
 	  //Frame identification by right click - view pagesoruce, search for frame. If iFrame tag is available
 	  //To switch to frame where operation to be performed
-	  driver.switchTo().frame(0);//0 is ffor 1 frame if more frames then put respective number
+	  driver.switchTo().frame(0);//0 is for 1 frame if more frames then put respective number
 	  Actions action = new Actions(driver);//Actions class
 	  action.clickAndHold(driver.findElement(By.xpath("//*[@id=\"draggable\"]")))
 	  	.moveToElement(driver.findElement(By.xpath("//*[@id=\"droppable\"]")))
@@ -91,14 +91,25 @@ public class Login_Invalid_Data {
 	  	.perform();
 	    
   }
+  
+  @Test (enabled = true)
+  public void ImplicitWait() {
+	  driver.get("http://www.half.ebay.com");
+	  //TImeout for pageload....for heavier pages
+	  driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+	  
+  }
+  
   @BeforeMethod
   public void beforeMethod() {
 	  System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver_win32\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get("http://automationpractice.com");
 		driver.manage().deleteAllCookies();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//For all elements - Global wait for all elements on page
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); 
 		driver.manage().window().maximize();
+		
   }
 
   @AfterMethod
