@@ -2,11 +2,13 @@ package testcases;
 
 import static org.testng.Assert.assertEquals;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
@@ -100,7 +102,7 @@ public class Login_Invalid_Data {
 	  
   }
   
-  @Test (enabled = true)
+  @Test (enabled = false)
   public void DynamicXpath() {
 	  //Don't use absolute xpath rather create own xpath
 	  //1.Xpath starts with "//" 2. Find HTML tag of element i.e. after "<" 3. After tag followed by "[]" 4. Check different properties avlbl 
@@ -125,6 +127,23 @@ public class Login_Invalid_Data {
 	  
   }
   
+  @Test (enabled = true)
+  public void CountLinks() {
+	   //To count number of elements on page
+	  driver.get("http://www.ebay.co.uk");
+	  //All links have <a> html tag:
+	  List <WebElement> linklist = driver.findElements(By.tagName("a"));
+	  //To get size of List above
+	  System.out.println(linklist.size());
+	  //To get text of each link:
+	  for (int i=0; i<linklist.size();i++) {
+		  String linktext = linklist.get(i).getText();
+		  System.out.println(linktext);
+	  }
+		  
+	  //For buttons use <button>
+	  
+  }
   @BeforeMethod
   public void beforeMethod() {
 	  System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver_win32\\chromedriver.exe");
@@ -139,7 +158,7 @@ public class Login_Invalid_Data {
 
   @AfterMethod
   public void afterMethod() {
-	  //driver.quit();
+	  driver.quit();
   }
 
 }
