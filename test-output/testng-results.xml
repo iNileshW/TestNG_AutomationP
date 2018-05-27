@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="5" total="6" passed="1">
+<testng-results skipped="0" failed="0" ignored="6" total="7" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="41437" started-at="2018-05-27T15:25:17Z" finished-at="2018-05-27T15:25:59Z">
+  <suite name="Default suite" duration-ms="24793" started-at="2018-05-27T17:02:30Z" finished-at="2018-05-27T17:02:55Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="41437" started-at="2018-05-27T15:25:17Z" finished-at="2018-05-27T15:25:59Z">
+    <test name="Default test" duration-ms="24793" started-at="2018-05-27T17:02:30Z" finished-at="2018-05-27T17:02:55Z">
       <class name="testcases.Login_Invalid_Data">
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testcases.Login_Invalid_Data@18be83e4]" name="beforeMethod" is-config="true" duration-ms="13229" started-at="2018-05-27T15:25:17Z" finished-at="2018-05-27T15:25:30Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testcases.Login_Invalid_Data@18be83e4]" name="beforeMethod" is-config="true" duration-ms="12085" started-at="2018-05-27T17:02:30Z" finished-at="2018-05-27T17:02:42Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="CountLinks()[pri:0, instance:testcases.Login_Invalid_Data@18be83e4]" name="CountLinks" duration-ms="26696" started-at="2018-05-27T15:25:30Z" finished-at="2018-05-27T15:25:57Z">
+        <test-method status="PASS" signature="pagenavigation()[pri:0, instance:testcases.Login_Invalid_Data@18be83e4]" name="pagenavigation" duration-ms="11330" started-at="2018-05-27T17:02:42Z" finished-at="2018-05-27T17:02:53Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- CountLinks -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testcases.Login_Invalid_Data@18be83e4]" name="afterMethod" is-config="true" duration-ms="1418" started-at="2018-05-27T15:25:57Z" finished-at="2018-05-27T15:25:59Z">
+        </test-method> <!-- pagenavigation -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testcases.Login_Invalid_Data@18be83e4]" name="afterMethod" is-config="true" duration-ms="1278" started-at="2018-05-27T17:02:53Z" finished-at="2018-05-27T17:02:55Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->

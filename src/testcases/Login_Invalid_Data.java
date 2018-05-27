@@ -127,7 +127,7 @@ public class Login_Invalid_Data {
 	  
   }
   
-  @Test (enabled = true)
+  @Test (enabled = false)
   public void CountLinks() {
 	   //To count number of elements on page
 	  driver.get("http://www.ebay.co.uk");
@@ -139,11 +139,21 @@ public class Login_Invalid_Data {
 	  for (int i=0; i<linklist.size();i++) {
 		  String linktext = linklist.get(i).getText();
 		  System.out.println(linktext);
-	  }
-		  
-	  //For buttons use <button>
+	  }		  
+	  //For buttons use <button>	  
+  }
+  
+  @Test (enabled = true)
+  public void pagenavigation() throws InterruptedException {
+	  driver.navigate().to("http://www.google.com"); //For external URL from current url then use navigate-to
+	  Thread.sleep(2000);
+	  driver.navigate().back();
+	  Thread.sleep(2000);
+	  driver.navigate().forward();
+	  driver.navigate().refresh();
 	  
   }
+  
   @BeforeMethod
   public void beforeMethod() {
 	  System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver_win32\\chromedriver.exe");
