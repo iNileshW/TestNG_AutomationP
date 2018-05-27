@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="6" total="7" passed="1">
+<testng-results skipped="0" failed="0" ignored="7" total="9" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="24793" started-at="2018-05-27T17:02:30Z" finished-at="2018-05-27T17:02:55Z">
+  <suite name="Default suite" duration-ms="45696" started-at="2018-05-27T18:04:52Z" finished-at="2018-05-27T18:05:37Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="24793" started-at="2018-05-27T17:02:30Z" finished-at="2018-05-27T17:02:55Z">
+    <test name="Default test" duration-ms="45696" started-at="2018-05-27T18:04:52Z" finished-at="2018-05-27T18:05:37Z">
       <class name="testcases.Login_Invalid_Data">
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testcases.Login_Invalid_Data@18be83e4]" name="beforeMethod" is-config="true" duration-ms="12085" started-at="2018-05-27T17:02:30Z" finished-at="2018-05-27T17:02:42Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testcases.Login_Invalid_Data@4c70fda8]" name="beforeMethod" is-config="true" duration-ms="12444" started-at="2018-05-27T18:04:52Z" finished-at="2018-05-27T18:05:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="pagenavigation()[pri:0, instance:testcases.Login_Invalid_Data@18be83e4]" name="pagenavigation" duration-ms="11330" started-at="2018-05-27T17:02:42Z" finished-at="2018-05-27T17:02:53Z">
+        <test-method status="PASS" signature="ImplicitWait()[pri:0, instance:testcases.Login_Invalid_Data@4c70fda8]" name="ImplicitWait" duration-ms="11537" started-at="2018-05-27T18:05:04Z" finished-at="2018-05-27T18:05:16Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- pagenavigation -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testcases.Login_Invalid_Data@18be83e4]" name="afterMethod" is-config="true" duration-ms="1278" started-at="2018-05-27T17:02:53Z" finished-at="2018-05-27T17:02:55Z">
+        </test-method> <!-- ImplicitWait -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testcases.Login_Invalid_Data@4c70fda8]" name="afterMethod" is-config="true" duration-ms="1193" started-at="2018-05-27T18:05:16Z" finished-at="2018-05-27T18:05:17Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testcases.Login_Invalid_Data@4c70fda8]" name="beforeMethod" is-config="true" duration-ms="9234" started-at="2018-05-27T18:05:17Z" finished-at="2018-05-27T18:05:26Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testcases.Login_Invalid_Data@4c70fda8]" name="beforeMethod" duration-ms="9802" started-at="2018-05-27T18:05:26Z" finished-at="2018-05-27T18:05:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testcases.Login_Invalid_Data@4c70fda8]" name="afterMethod" is-config="true" duration-ms="1355" started-at="2018-05-27T18:05:36Z" finished-at="2018-05-27T18:05:37Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->

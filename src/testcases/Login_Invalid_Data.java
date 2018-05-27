@@ -11,11 +11,14 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -99,13 +102,26 @@ public class Login_Invalid_Data {
 	    
   }
   
-  @Test (enabled = false)
+  @Test (enabled = true)
   public void ImplicitWait() {
-	  driver.get("http://www.half.ebay.com");
+	  driver.navigate().to("http://www.half.ebay.com");
 	  //TImeout for pageload....for heavier pages
 	  driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+	  //explicitwait - To avoid Thread Sleep instead put dynamic wait
+	  //explicit wait is not generic method
+	  
+	  driver.navigate().to("http://amazon.co.uk");
+	  ClickOn(driver,driver.findElement(By.xpath("//*[@id=\"nav-link-yourAccount\"]/span[2]")),20);
 	  
   }
+  
+  //Method for Explicit Wait
+  public static void ClickOn(WebDriver driver, WebElement locator, int timeout) {
+	  //WebDriverWait is a class in selenium here we are creating an object of this class.  
+	  new WebDriverWait(driver, timeout).ignoring(StaleElementReferenceException.class)
+	  	.until(ExpectedConditions.elementToBeClickable(locator));
+  }
+	  
   
   @Test (enabled = false)
   public void DynamicXpath() {
@@ -159,7 +175,7 @@ public class Login_Invalid_Data {
 	  
   }
   
-  @Test (enabled = true)
+  @Test (enabled = false)
   public void screenshot() throws IOException {
 	  driver.navigate().to("https://www.google.com");
 	  //Take screenshot & Store as a file format
@@ -171,6 +187,7 @@ public class Login_Invalid_Data {
 	  FileUtils.copyFile(src, new File ("C:\\Users\\nwairagade\\eclipse-workspace\\TestNG_AutomationP-master\\google.png"));
 	  
   }
+  
   
   @BeforeMethod
   public void beforeMethod() {
