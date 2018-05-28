@@ -4,7 +4,9 @@ import static org.testng.Assert.assertEquals;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
@@ -102,7 +104,7 @@ public class Login_Invalid_Data {
 	    
   }
   
-  @Test (enabled = true)
+  @Test (enabled = false)
   public void ImplicitWait() {
 	  driver.navigate().to("http://www.half.ebay.com");
 	  //TImeout for pageload....for heavier pages
@@ -188,7 +190,29 @@ public class Login_Invalid_Data {
 	  
   }
   
-  
+  @Test (enabled = true)
+  public void popuphandling() {
+	  driver.navigate().to("http://www.popuptest.com/goodpopups.html");
+	  //When pop opens parent & child window are present after pop up opens
+	  //Use switch to go to another pop up window do actions & close it & bring control back to main window by switch
+	  //To switch use windowid. Use Window Handler API from Selenium.
+	 driver.findElement(By.linkText("Good PopUp #1")).click();
+	  Set <String> handler = driver.getWindowHandles();//1 set object of string type given. Set is collection in Java
+	  //2 window ids are available in set object
+	  //Set object are not stored on based of indexes
+	  //So to get values use iterator
+	  Iterator <String> it = handler.iterator();
+	  String parentwindowid = it.next();
+	  System.out.println("parentwindowid is: "+parentwindowid );
+	  System.out.println("parent window title is "+driver.getTitle());
+	  
+	  String childwindowid = it.next();
+	  System.out.println("childwindowid ID is: "+childwindowid);
+	  driver.switchTo().window(parentwindowid);
+	  System.out.println("Parent window title is "+driver.getTitle());
+	  driver.switchTo().window(childwindowid);
+	  driver.close();
+  }
   @BeforeMethod
   public void beforeMethod() {
 	  System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver_win32\\chromedriver.exe");

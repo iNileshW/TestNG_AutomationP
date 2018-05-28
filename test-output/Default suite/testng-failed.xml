@@ -5,8 +5,8 @@
     <classes>
       <class name="testcases.Login_Invalid_Data">
         <methods>
+          <include name="popuphandling"/>
           <include name="afterMethod"/>
-          <include name="DynamicXpath"/>
           <include name="beforeMethod"/>
         </methods>
       </class> <!-- testcases.Login_Invalid_Data -->
