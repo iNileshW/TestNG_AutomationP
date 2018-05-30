@@ -29,5 +29,6 @@
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/JARs/selenium-server-standalone-3.12.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

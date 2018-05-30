@@ -22,6 +22,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -219,7 +220,7 @@ public class Login_Invalid_Data {
 	  driver.close();
   }
   
-  @Test (enabled = true)
+  @Test (enabled = false)
   public void config_properties_File_use() throws IOException {
 	  //To read the properties file:
 	  //Create object of properties class. This is done using properties class of javva Util package
@@ -258,9 +259,24 @@ public class Login_Invalid_Data {
 	  driver.close();
   }
   
-  
+  @Test (enabled = true)
+  public void headless_browser() {
+	  //HtmlUnitDriver is not of part of Selenium 3.x
+	  //To Use download HtmlUnitDriver Jar File from google and htmlunitdriver jar download
+	  //3 Advantagess: 1. Testing behind the scene 2. Testing is quick 3. Not suitable for actions class
+	  //4. Also called ghost driver	  
+	  
+	  driver= new HtmlUnitDriver();
+	  driver.get("http://wwww.skyscanner.com");
+	  System.out.println(driver.getTitle());
+	  driver.findElement(By.id("authentication-link")).click();
+	  System.out.println(driver.getTitle());
+	  driver.close();
+	  
+  }
   
   @BeforeMethod
+
   public void beforeMethod() {
 	  System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver_win32\\chromedriver.exe");
 		driver = new ChromeDriver();
