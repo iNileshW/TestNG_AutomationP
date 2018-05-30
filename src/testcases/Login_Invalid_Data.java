@@ -3,9 +3,12 @@ package testcases;
 import static org.testng.Assert.assertEquals;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
@@ -18,6 +21,8 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -190,7 +195,7 @@ public class Login_Invalid_Data {
 	  
   }
   
-  @Test (enabled = true)
+  @Test (enabled = false)
   public void popuphandling() {
 	  driver.navigate().to("http://www.popuptest.com/goodpopups.html");
 	  //When pop opens parent & child window are present after pop up opens
@@ -213,6 +218,48 @@ public class Login_Invalid_Data {
 	  driver.switchTo().window(childwindowid);
 	  driver.close();
   }
+  
+  @Test (enabled = true)
+  public void config_properties_File_use() throws IOException {
+	  //To read the properties file:
+	  //Create object of properties class. This is done using properties class of javva Util package
+	  Properties prop = new Properties();
+	  //Use FileInputStream class to read the config.properties file. Give location of config properties file to tell which file to read
+	  FileInputStream ip = new FileInputStream("C:\\Users\\nwairagade\\eclipse-workspace\\TestNG_AutomationP-master\\src\\testcases\\config.properties");
+	  //Once the connection is established then load this file:
+	  prop.load(ip);
+	  //To read the properties:
+	  System.out.println(prop.getProperty("name"));
+	  String URL = prop.getProperty("url");
+	  System.out.println(URL);
+	  String browser_name = prop.getProperty("browser");
+	  System.out.println(browser_name);
+	  
+	  if(browser_name.equals("chrome")) {
+		  System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver_win32\\chromedriver.exe");
+		  driver = new ChromeDriver();
+	  }
+	  
+	  else if(browser_name.contentEquals("firefox")) {
+		  System.setProperty("webdriver.gecko.driver", "C:\\Drivers\\C:\\Drivers\\geckodriver-v0.20.1-win64\\geckodriver.exe");
+		  driver = new FirefoxDriver();
+			
+	  }
+	  
+	  else {
+		  System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\IEDriverServer_x64_3.12.0\\iedriverserver.exe");
+		  driver = new InternetExplorerDriver();		  
+	  }
+	  driver.navigate().to(URL);
+	  //Advantage of config.properties is just change the default data to run any type of browser to use
+	  driver.findElement(By.xpath(prop.getProperty("register_xpath"))).click();
+	  driver.findElement(By.xpath(prop.getProperty("firstname_xpath"))).sendKeys(prop.getProperty("firstname"));
+	  driver.findElement(By.xpath(prop.getProperty("email_xpath"))).sendKeys(prop.getProperty("email"));
+	  driver.close();
+  }
+  
+  
+  
   @BeforeMethod
   public void beforeMethod() {
 	  System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver_win32\\chromedriver.exe");

@@ -5,7 +5,7 @@
     <classes>
       <class name="testcases.Login_Invalid_Data">
         <methods>
-          <include name="popuphandling"/>
+          <include name="config_properties_File_use"/>
           <include name="afterMethod"/>
           <include name="beforeMethod"/>
         </methods>
