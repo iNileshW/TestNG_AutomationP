@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TakesScreenshot;
@@ -259,7 +260,7 @@ public class Login_Invalid_Data {
 	  driver.close();
   }
   
-  @Test (enabled = true)
+  @Test (enabled = false)
   public void headless_browser() {
 	  //HtmlUnitDriver is not of part of Selenium 3.x
 	  //To Use download HtmlUnitDriver Jar File from google and htmlunitdriver jar download
@@ -275,6 +276,32 @@ public class Login_Invalid_Data {
 	  
   }
   
+  @Test (enabled= true)
+  public void js_executor() {
+	  WebElement Signin = driver.findElement(By.linkText("Sign in"));
+	  flash(Signin,driver);
+  }
+  
+  public static void flash(WebElement element, WebDriver driver) {
+	  JavascriptExecutor js = ((JavascriptExecutor) driver);//Casting driver into javascriptExecutor. Left side has become object
+	  //CSS value
+	  String backgroundcolor = element.getCssValue("backgrooundcolor");
+	  for (int i=0; i<100; i++) {
+		  changeColor("rgb(0,200,0)",element, driver);
+		  changeColor(backgroundcolor, element, driver);
+	  }
+	}
+  
+  public static void changeColor(String Color, WebElement element, WebDriver driver) {
+	  JavascriptExecutor js = ((JavascriptExecutor) driver);
+	  js.executeScript("arguments[0].style.backgroundColor = '"+Color+"'", element);
+	  try {
+		  Thread.sleep(20);
+	  }
+	  catch(InterruptedException e) {		  
+		  System.out.println(e);
+	  }
+  }
   @BeforeMethod
 
   public void beforeMethod() {
