@@ -5,8 +5,8 @@
     <classes>
       <class name="testcases.Login_Invalid_Data">
         <methods>
-          <include name="config_properties_File_use"/>
           <include name="afterMethod"/>
+          <include name="js_executor"/>
           <include name="beforeMethod"/>
         </methods>
       </class> <!-- testcases.Login_Invalid_Data -->

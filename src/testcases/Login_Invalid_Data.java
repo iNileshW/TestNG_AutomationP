@@ -280,6 +280,7 @@ public class Login_Invalid_Data {
   public void js_executor() {
 	  WebElement Signin = driver.findElement(By.linkText("Sign in"));
 	  flash(Signin,driver);
+	  drawBorder(Signin,driver);
   }
   
   public static void flash(WebElement element, WebDriver driver) {
@@ -289,6 +290,8 @@ public class Login_Invalid_Data {
 	  for (int i=0; i<100; i++) {
 		  changeColor("rgb(0,200,0)",element, driver);
 		  changeColor(backgroundcolor, element, driver);
+		  generateAlert("There is Bug here", driver);
+		  driver.switchTo().alert().dismiss();
 	  }
 	}
   
@@ -302,6 +305,18 @@ public class Login_Invalid_Data {
 		  System.out.println(e);
 	  }
   }
+  
+  public static void generateAlert(String message, WebDriver driver) {
+	  JavascriptExecutor js = ((JavascriptExecutor) driver);
+	  js.executeScript("alert('"+message+"')");
+	  
+  }
+  
+  public static void drawBorder(WebElement element, WebDriver driver) {
+	  JavascriptExecutor js = ((JavascriptExecutor) driver);
+	  js.executeScript("arguments[0].style.border = '3px solid red'", element);	  
+  }
+  
   @BeforeMethod
 
   public void beforeMethod() {
@@ -311,8 +326,7 @@ public class Login_Invalid_Data {
 		driver.manage().deleteAllCookies();
 		//For all elements - Global wait for all elements on page
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); 
-		driver.manage().window().maximize();
-		
+		driver.manage().window().maximize();		
   }
 
   @AfterMethod
