@@ -281,6 +281,7 @@ public class Login_Invalid_Data {
 	  WebElement Signin = driver.findElement(By.linkText("Sign in"));
 	  flash(Signin,driver);
 	  drawBorder(Signin,driver);
+	  clickElementbyJS(Signin,driver);
   }
   
   public static void flash(WebElement element, WebDriver driver) {
@@ -315,6 +316,11 @@ public class Login_Invalid_Data {
   public static void drawBorder(WebElement element, WebDriver driver) {
 	  JavascriptExecutor js = ((JavascriptExecutor) driver);
 	  js.executeScript("arguments[0].style.border = '3px solid red'", element);	  
+  }
+  
+  public static void clickElementbyJS(WebElement element, WebDriver driver) {
+	  JavascriptExecutor js = ((JavascriptExecutor) driver);
+	  js.executeScript("arguments[0].click();", element);
   }
   
   @BeforeMethod
