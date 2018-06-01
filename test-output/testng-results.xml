@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="11" total="12" passed="1">
+<testng-results skipped="0" failed="0" ignored="12" total="13" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="27127" started-at="2018-05-31T23:11:46Z" finished-at="2018-05-31T23:12:14Z">
+  <suite name="Default suite" duration-ms="88122" started-at="2018-06-01T17:06:12Z" finished-at="2018-06-01T17:07:40Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="27127" started-at="2018-05-31T23:11:46Z" finished-at="2018-05-31T23:12:14Z">
+    <test name="Default test" duration-ms="88122" started-at="2018-06-01T17:06:12Z" finished-at="2018-06-01T17:07:40Z">
       <class name="testcases.Login_Invalid_Data">
-        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testcases.Login_Invalid_Data@3dfc5fb8]" name="beforeMethod" is-config="true" duration-ms="11649" started-at="2018-05-31T23:11:47Z" finished-at="2018-05-31T23:11:58Z">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:testcases.Login_Invalid_Data@3dfc5fb8]" name="beforeMethod" is-config="true" duration-ms="12597" started-at="2018-06-01T17:06:12Z" finished-at="2018-06-01T17:06:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="PASS" signature="js_executor()[pri:0, instance:testcases.Login_Invalid_Data@3dfc5fb8]" name="js_executor" duration-ms="14362" started-at="2018-05-31T23:11:58Z" finished-at="2018-05-31T23:12:13Z">
+        <test-method status="PASS" signature="BrokenLinks()[pri:0, instance:testcases.Login_Invalid_Data@3dfc5fb8]" name="BrokenLinks" duration-ms="74362" started-at="2018-06-01T17:06:24Z" finished-at="2018-06-01T17:07:39Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- js_executor -->
-        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testcases.Login_Invalid_Data@3dfc5fb8]" name="afterMethod" is-config="true" duration-ms="1013" started-at="2018-05-31T23:12:13Z" finished-at="2018-05-31T23:12:14Z">
+        </test-method> <!-- BrokenLinks -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:testcases.Login_Invalid_Data@3dfc5fb8]" name="afterMethod" is-config="true" duration-ms="1087" started-at="2018-06-01T17:07:39Z" finished-at="2018-06-01T17:07:40Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->

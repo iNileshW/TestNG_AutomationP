@@ -6,6 +6,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
@@ -272,11 +276,10 @@ public class Login_Invalid_Data {
 	  System.out.println(driver.getTitle());
 	  driver.findElement(By.id("authentication-link")).click();
 	  System.out.println(driver.getTitle());
-	  driver.close();
-	  
+	  driver.close();	  
   }
   
-  @Test (enabled= true)
+  @Test (enabled= false)
   public void js_executor() {
 	  WebElement Signin = driver.findElement(By.linkText("Sign in"));
 	  flash(Signin,driver);
@@ -321,6 +324,39 @@ public class Login_Invalid_Data {
   public static void clickElementbyJS(WebElement element, WebDriver driver) {
 	  JavascriptExecutor js = ((JavascriptExecutor) driver);
 	  js.executeScript("arguments[0].click();", element);
+  }
+  
+  @Test(enabled = true)
+  public void BrokenLinks() throws MalformedURLException, IOException {
+	  driver.navigate().to("https://huxley-uk-and-i.production.sthree-volcanic.com/");
+	  //Find all image & links
+	  List <WebElement> linklist = driver.findElements(By.tagName("a"));
+	  //Add img tags in above list
+	  linklist.addAll(driver.findElements(By.tagName("img")));
+	  System.out.println("All link count is "+ linklist.size());
+	  //Active links with href property
+	  List<WebElement> activelinks = new ArrayList<WebElement>();
+	  //Iterate LinkList to exclude link/images without href attribute
+	  for (int i=0; i<linklist.size();i++) {
+		  System.out.println(linklist.get(i).getAttribute("href"));
+		  //Not counting null & javascript hrefs
+		  if(linklist.get(i).getAttribute("href")!=null && (!linklist.get(i).getAttribute("href").contains("javascript"))) {
+			  activelinks.add(linklist.get(i));			  
+		  }
+	  }
+	  //Check to get size of activelink list
+	  System.out.println("Active Links Size : " + activelinks.size());
+	  
+	  //Check the href url with httpconnection api
+	  //200 - ok; 404 - Not Found; 500 - Internal Error; 400 - Bad Request
+	  for (int i=0; i<activelinks.size();i++) {
+		  HttpURLConnection connection = (HttpURLConnection) new URL(activelinks.get(i).getAttribute("href")).openConnection();
+		  connection.connect();
+		  String response = connection.getResponseMessage(); //return ok/error
+		  connection.disconnect();
+		  System.out.println(activelinks.get(i).getAttribute("href")+" ---> " + response);
+		  
+	  }
   }
   
   @BeforeMethod
