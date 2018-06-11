@@ -280,14 +280,22 @@ public class Login_Invalid_Data {
   }
   
   @Test (enabled= false)
-  public void js_executor() {
+  public void js_executor() throws InterruptedException {
 	  WebElement Signin = driver.findElement(By.linkText("Sign in"));
-	  flash(Signin,driver);
-	  drawBorder(Signin,driver);
-	  clickElementbyJS(Signin,driver);
+	  flash(Signin,driver);//flash signin
+	  drawBorder(Signin,driver);//draw border on signin
+	  generateAlert("This is a Test",driver); //Alert for page 
+	  clickElementbyJS(Signin,driver); //Click signin
+	  refresh_browser_byJS(driver); //Refresh Browser by JS
+	  System.out.println(get_TitleBy_JS(driver)); //Get Title of page by JS
+	  System.out.println(getPageInnerText_JS(driver)); //Get page inner Text by JS
+	  scrollPageDown_JS(driver); // Scroll to bottom of page by JS
+	  WebElement element = driver.findElement(By.xpath(""));
+	  scrollintoView_JS(element, driver);//Scroll to the element. To scroll to a element 
+	  
   }
   
-  public static void flash(WebElement element, WebDriver driver) {
+  public static void flash(WebElement element, WebDriver driver) throws InterruptedException {
 	  JavascriptExecutor js = ((JavascriptExecutor) driver);//Casting driver into javascriptExecutor. Left side has become object
 	  //CSS value
 	  String backgroundcolor = element.getCssValue("backgrooundcolor");
@@ -310,10 +318,13 @@ public class Login_Invalid_Data {
 	  }
   }
   
-  public static void generateAlert(String message, WebDriver driver) {
+  public static void generateAlert(String message, WebDriver driver) throws InterruptedException {
 	  JavascriptExecutor js = ((JavascriptExecutor) driver);
 	  js.executeScript("alert('"+message+"')");
-	  
+	  Thread.sleep(5000);
+	  Alert alert = driver.switchTo().alert();
+		System.out.println(alert);
+		alert.accept();//alert.dismiss();
   }
   
   public static void drawBorder(WebElement element, WebDriver driver) {
@@ -326,6 +337,32 @@ public class Login_Invalid_Data {
 	  js.executeScript("arguments[0].click();", element);
   }
   
+  public static void refresh_browser_byJS(WebDriver driver) {
+	  JavascriptExecutor js = ((JavascriptExecutor) driver);
+	  js.executeScript("history.go(0);");
+  }
+  
+  public static String get_TitleBy_JS(WebDriver driver) {
+	  JavascriptExecutor js = ((JavascriptExecutor) driver);
+	  String Title = js.executeScript("return document.title").toString();
+	  return Title;
+  }
+  
+  public static String getPageInnerText_JS(WebDriver driver) {
+	  JavascriptExecutor js = ((JavascriptExecutor) driver);
+	  String PageText = js.executeScript("return document.documentElement.innerText").toString();
+	  return PageText;
+  }
+  
+  public static void scrollPageDown_JS(WebDriver driver) {
+	  JavascriptExecutor js = ((JavascriptExecutor) driver);
+	  js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+  }
+  
+  public static void scrollintoView_JS(WebElement element, WebDriver driver) {
+	  JavascriptExecutor js = ((JavascriptExecutor) driver);
+	  js.executeScript("arguments[0].scrollIntoView(true);",element);
+  }
   @Test(enabled = true)
   public void BrokenLinks() throws MalformedURLException, IOException {
 	  driver.navigate().to("https://huxley-uk-and-i.production.sthree-volcanic.com/");
@@ -358,6 +395,8 @@ public class Login_Invalid_Data {
 		  
 	  }
   }
+  
+  
   
   @BeforeMethod
 
