@@ -31,6 +31,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -290,7 +291,9 @@ public class Login_Invalid_Data {
 	  System.out.println(get_TitleBy_JS(driver)); //Get Title of page by JS
 	  System.out.println(getPageInnerText_JS(driver)); //Get page inner Text by JS
 	  scrollPageDown_JS(driver); // Scroll to bottom of page by JS
-	  WebElement element = driver.findElement(By.xpath(""));
+	  //WebElement element = driver.findElement(By.xpath(""));
+	  driver.navigate().to("https://www.amazon.com");
+	  WebElement element = driver.findElement(By.xpath("//*[@id=\"navBackToTop\"]/div/span"));
 	  scrollintoView_JS(element, driver);//Scroll to the element. To scroll to a element 
 	  
   }
@@ -302,8 +305,8 @@ public class Login_Invalid_Data {
 	  for (int i=0; i<100; i++) {
 		  changeColor("rgb(0,200,0)",element, driver);
 		  changeColor(backgroundcolor, element, driver);
-		  generateAlert("There is Bug here", driver);
-		  driver.switchTo().alert().dismiss();
+		  /*generateAlert("There is Bug here", driver);
+		  driver.switchTo().alert().dismiss();*/
 	  }
 	}
   
@@ -363,7 +366,8 @@ public class Login_Invalid_Data {
 	  JavascriptExecutor js = ((JavascriptExecutor) driver);
 	  js.executeScript("arguments[0].scrollIntoView(true);",element);
   }
-  @Test(enabled = true)
+ 
+  @Test(enabled = false)
   public void BrokenLinks() throws MalformedURLException, IOException {
 	  driver.navigate().to("https://huxley-uk-and-i.production.sthree-volcanic.com/");
 	  //Find all image & links
@@ -396,7 +400,65 @@ public class Login_Invalid_Data {
 	  }
   }
   
+  @Test (enabled = false)
+  public void display_enable_selected() {
+	  driver.navigate().to("https://www.ebay.co.uk/");
+	  driver.findElement(By.xpath("//a[contains(text(),'My eBay')]")).click();
+	  driver.findElement(By.id("register-text-block")).click();
+	  WebElement element = driver.findElement(By.id("ppaFormSbtBtn"));
+	  //isdisplayed method:
+	  boolean b = element.isDisplayed();
+	  System.out.printf("Condition of is displayed: %b\n",b);
+	  //Enter Data
+	  driver.findElement(By.name("firstname")).sendKeys("j");
+	  driver.findElement(By.name("lastname")).sendKeys("j");
+	  driver.findElement(By.name("email")).sendKeys("j@jf.com");
+	  driver.findElement(By.name("PASSWORD")).sendKeys("sdlak@");
+	  //isenabled method:
+	  boolean c = element.isEnabled();
+	  System.out.printf("Condition of is enabled: %b\n",c);
+	  //isselected method : applicable for checkbox, dropdown, radiobutton
+	  WebElement checkbox_element= driver.findElement(By.xpath("//*[@id=\"showPASSWORD\"]/ul/li/span[1]"));
+	  boolean d = driver.findElement(By.xpath("//*[@id=\"showPASSWORD\"]/ul/li/span[1]")).isSelected();
+	  System.out.printf("Condition of is selected: %b\n",d);
+	  //checkbox_element.click();
+	  driver.findElement(By.xpath("//*[@id=\"showPASSWORD\"]/ul/li/span[1]")).click();
+	  boolean e = driver.findElement(By.xpath("//*[@id=\"showPASSWORD\"]/ul/li/span[1]")).isSelected();
+	  System.out.printf("Condition of is selected: %b\n",e);
+	  System.out.printf("Condition of is enabled is : %b\n",b);
+  }
+
+  @Test (enabled = false)
+  //Not complete
+  public void dynamictablehanlding() {
+	  driver.navigate().to("http://13.59.25.55:8888/chs");
+	  //driver.switchTo().frame(0);
+	  //driver.findElement(By.xpath("//a[contains(text(),'Inpatients')]")).click();
+	  //driver.switchTo().frame(1);
+	  driver.findElement(By.name("username")).sendKeys("admin");
+	  driver.findElement(By.name("password")).sendKeys("admin");
+	  driver.findElement(By.xpath("//input[@type='submit']")).click();
+	  driver.switchTo().frame("leftFrame").switchTo();
+	  driver.findElement(By.xpath("//a[contains(text(),'Archived Patients')]")).click();
+	  driver.findElement(By.xpath("//a[contains(text(),'texthere')]/parent::td//preceding-sibling::td//input[@name='contactid']")).click();
+  }
   
+  @Test (enabled = true)
+  public void dynamicxpath() {
+	  driver.navigate().to("http://www.google.com");
+	  System.out.println(driver.getTitle());
+	  driver.findElement(By.id("lst-ib")).sendKeys("testing");
+	  List<WebElement> list = driver.findElements(By.xpath("//ul[@role='listbox']//li/descendant::div[@class='sbqs_c']"));
+	  System.out.println("Total number of suggestions = "+list.size());
+	  for(int i=0;i<list.size();i++) {
+		  System.out.println(list.get(i).getText());
+		  if (list.get(i).getText().contains("Testing circle")) {
+			  list.get(i).click();
+			  System.out.println(driver.getTitle());
+			  break;
+		  }
+	  }	  
+  }
   
   @BeforeMethod
 
